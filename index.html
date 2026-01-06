@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>김현국 - 포트폴리오</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+/* 기본 스타일 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Nanum Myeongjo", serif;
+}
+
+body {
+  color: #0600AB;
+  min-height: 100vh;
+  padding: 40px 20px;
+  background: linear-gradient(80deg, #0033ff, #977dff);
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* 프로필 카드 */
+.profile-card {
+  background: linear-gradient(145deg, #ffccf2, #0033ff);
+  border-radius: 20px;
+  padding: 50px 40px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  animation: fadeIn 1.2s ease;
+  margin-bottom: 60px;
+  color: #f0f8ff;
+  position: relative;
+  overflow: hidden;
+}
+
+.profile-card::before {
+  content: "";
+  position: absolute;
+  top: -30%;
+  left: -30%;
+  width: 160%;
+  height: 160%;
+  background: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.15), transparent 50%),
+              radial-gradient(circle at 80% 80%, rgba(255,255,255,0.1), transparent 50%);
+  z-index: 0;
+  animation: floatPattern 20s linear infinite;
+}
+
+@keyframes floatPattern {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.05); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+.profile-card h1 {
+  color: #fcf6f5;
+  text-shadow: 0 5px 8px rgba(0,0,0,0.5);
+}
+
+.profile-card p.subtitle {
+  color: #fcf6f5;
+  text-shadow: 0 5px 6px rgba(0,0,0,0.4);
+}
+
+.profile-card .skill {
+  color: #fcf6f5;
+  text-shadow: 0 5px 4px rgba(0,0,0,0.3);
+}
+
+.profile-card h1,
+.profile-card p,
+.profile-card .skills {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.profile-img {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid #977dff;
+  margin-bottom: 20px;
+  transition: transform 0.4s;
+}
+.profile-img:hover { transform: scale(1.08); }
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+  color: #222;
+}
+p.subtitle {
+  font-size: 1.1rem;
+  color: #ffffff;
+  margin-bottom: 25px;
+}
+
+/* 스킬 */
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+.skill {
+  background: linear-gradient(135deg, #0033ff, #977dff);
+  padding: 10px 15px;
+  border-radius: 20px;
+  font-size: 0.95rem;
+  font-weight: bold;
+  color: #ff0000;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  transition: transform 0.3s;
+}
+.skill:hover { transform: translateY(-5px); }
+
+/* 섹션 */
+.section { margin: 60px 0; }
+.section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  border-left: 6px solid #eee7ec;
+  color: #ffffff;
+  padding-left: 12px;
+}
+
+/* 프로젝트 카드 */
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+/* 프로젝트 카드 - 배경 진하게 + 그림자 강화 */
+.project-card {
+  background: linear-gradient(80deg, #0033ff, #977dff);
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+  backdrop-filter: blur(6px);
+  transition: transform 0.3s, box-shadow 0.3s;
+  color: #ff0000;
+  text-align: center;
+}
+.project-card img {
+  max-width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 35px rgba(0,0,0,0.9);
+}
+.project-card h3 { 
+  margin-bottom: 10px; 
+  font-size: 1.2rem; 
+  color: #ffffff;
+}
+.project-card p { 
+  font-size: 0.95rem; 
+  color: #f0f0f0; 
+  line-height: 1.4; 
+}
+
+/* 자기소개 (About Me) */
+#about {
+  background: linear-gradient(135deg, #006ae4, #00a9f2);
+  padding: 70px 30px;
+  border-radius: 25px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+  text-align: center;
+  color: #ffccf2;
+  position: relative;
+  overflow: hidden;
+}
+#about::before {
+  content: "";
+  position: absolute;
+  top: -40%; left: -40%;
+  width: 180%; height: 180%;
+  background: conic-gradient(from 0deg, #787cfe 0%, transparent 30%, transparent 70%, #7eb2ee 100%);
+  animation: spin 18s linear infinite;
+  z-index: 0;
+}
+@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+#about h2 {
+  font-size: 2.8rem;
+  margin-bottom: 25px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #000000;
+  text-shadow: 0 0 12px #1d3d35, 0 0 24px #2c2542;
+  animation: glow 3s ease-in-out infinite alternate;
+  position: relative;
+  z-index: 1;
+}
+@keyframes glow {
+  from { text-shadow: 0 0 10px #ffffff, 0 0 20px #524b66; }
+  to { text-shadow: 0 0 20px #6b52aa, 0 0 35px #3b3838; }
+}
+#about p {
+  font-size: 1.2rem;
+  line-height: 1.9;
+  max-width: 800px;
+  margin: 0 auto;
+  font-weight: 400;
+  color: #302929;
+  position: relative;
+  z-index: 1;
+}
+#about p strong {
+  color: #00033f;
+  font-weight: 700;
+  text-shadow: 0 0 10px #b956f1, 0 0 20px #80bef0;
+}
+
+/* 수상 경력 타임라인 */
+.timeline { position: relative; margin: 20px 0; padding: 0; }
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 50%; transform: translateX(-50%);
+  top: 0; bottom: 0;
+  width: 4px; background: #ffccf2;
+  border-radius: 2px; z-index: 1;
+}
+.timeline-item {
+  position: relative;
+  width: 50%;
+  padding: 20px 40px;
+  box-sizing: border-box;
+}
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  top: 20px;
+  width: 14px; height: 14px;
+  background: #ffccf2;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #f2e6ee;
+  z-index: 2;
+}
+.timeline-item:nth-child(odd) { left: 0; text-align: right; }
+.timeline-item:nth-child(odd)::before { right: -7px; }
+.timeline-item:nth-child(even) { left: 50%; text-align: left; }
+.timeline-item:nth-child(even)::before { left: -7px; }
+
+/* 타임라인 이벤트 카드 - 밝은 버전 */
+.event {
+  background: linear-gradient(80deg, #ffccf2, #977dff);
+  padding: 20px;
+  border-radius: 15px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.5); 
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+  z-index: 1;
+  color: #00003d;
+  text-align: center;
+}
+.event img {
+  max-width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+.event:hover { 
+  transform: translateY(-5px); 
+  box-shadow: 0 14px 30px rgba(0,0,0,0.6); 
+}
+.event h3 { 
+  margin-bottom: 8px; 
+  color: #00003d;
+}
+.event p { 
+  font-size: 0.95rem; 
+  color: #00003d; 
+  margin-bottom: 10px; 
+}
+
+
+/* Contact */
+.contact {
+  text-align: center;
+  background: #0600af;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+}
+.contact h2 {
+  border-left: none;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: #ffccf2;
+}
+.contact p { color: #f2e6ee; font-size: 1.1rem; margin: 10px 0; }
+.contact a { color: #f2e6ee; text-decoration: none; font-weight: bold; }
+.contact a:hover { color: #fff; }
+
+/* 반응형 */
+@media (max-width: 800px) {
+  .timeline-item { width: 100%; padding: 20px 20px; }
+  .timeline-item:nth-child(odd),
+  .timeline-item:nth-child(even) { left: 0; text-align: left; }
+  .timeline-item::before { left: 50%; transform: translateX(-50%); }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <!-- 프로필 -->
+  <div class="profile-card">
+    <img src="myphoto.jpg" alt="프로필 사진" class="profile-img">
+    <h1>Kim hyoen kuk</h1>
+    <p class="subtitle">Gumi Electronic High School | Electrical, Electronic & Software Development</p>
+    <div class="skills">
+      <span class="skill">C</span>
+      <span class="skill">C++</span>
+      <span class="skill">Arduino Mega 2560</span>
+      <span class="skill">Industrial robot</span>
+      <span class="skill">Python</span>
+      <span class="skill">Atmega128a</span>
+      <span class="skill">PLC</span>
+      <span class="skill">CAD</span>
+    </div>
+  </div>
+
+  <!-- 포트폴리오 섹션 -->
+  <div class="section">
+    <h2>Experience</h2>
+    <div class="projects">
+      <div class="project-card">
+        <h3>C Progamming</h3>
+        <p>Microcontrollers & Embedded Systems(Arduino Mega 2560) development</p>
+      </div>
+      <div class="project-card">
+        <h3>C++ Progamming</h3>
+        <p>Studying for Development of Object Oriented Design and Robot Control Program</p>
+      </div>
+      <div class="project-card">
+        <h3>Python Progamming</h3>
+        <p>Diverse development experience using Python. Data processing, algorithm implementation, simulation, etc.</p>
+      </div>
+      <div class="project-card">
+        <h3>ATmega128a</h3>
+        <p>Performed sensor control and BZ, UART communication control projects using AVR microcontroller (ATmega).</p>
+      </div>
+      <div class="project-card">
+        <h3>Industrial robot development</h3>
+        <p>Experience in controlling 6-axis multi-joint industrial robots and PLC robots, gentry robots, and index table control.</p>
+      </div>
+      <div class="project-card">
+        <h3>SoC shcool club</h3>
+        <p>Completion of training in the eight major semiconductor process theories and semiconductor process equipment</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 자기소개 섹션 -->
+  <div class="section" id="about">
+    <h2>About Me</h2>
+    <p>
+      I'm currently attending Gumi Electronic Technical High School and am passionate about <strong>electrical engineering, electronics, and software development.</strong>
+      I enjoy designing circuits and implementing programs to solve problems,
+      and I'm steadily developing my skills through <strong>robotics control and embedded systems development.</strong>
+      I enjoy learning new technologies and applying them to real-world projects.
+    </p>
+  </div>
+
+  <!-- 수상 경력 & 이력 섹션 -->
+  <div class="section" id="awards">
+    <h2>Award & History</h2>
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="event">
+          <span class="year">2025.12</span>
+          <h3>Obtain programming certification</h3>
+          <p>Obtained Coding Specialist Professional 1 C++ certification</p>
+          <img src="cosproc++.png" alt="수상 사진">
+        </div>
+      </div>
+      
+      <div class="timeline-item">
+        <div class="event">
+          <span class="year">2025.11</span>
+          <h3>KEPCO KDN Bitgaram Energy Valley Software Competition</h3>
+          <p>Encouragement Award in Bitgaram Energy Valley Software Competition</p>
+          <img src="한전kdn.png" alt="수상 사진">
+        </div>
+      </div>
+      
+      <div class="timeline-item">
+        <div class="event">
+          <span class="year">2025.11</span>
+          <h3>Grand Prize in the On-campus Major Ability Competition</h3>
+          <p>First place in the electronic business card creation project</p>
+          <img src="전자명함.jpg" alt="수상 사진">
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="event">
+          <span class="year">2025.11</span>
+          <h3>White Hacker Competition</h3>
+          <p>Winner of the Grand Prize at the Hyundai Autoever White Hacker Competition</p>
+          <img src="화이트해커.jpg" alt="수상 사진">
+        </div>
+      </div>
+      
+      <div class="timeline-item">
+        <div class="event">
+          <span class="year">2025.10</span>
+          <h3>KES(Korea Electronics Show) in COEX</h3>
+          <p>Visiting the Korea Electronics Show</p>
+          <img src="코엑스.jpg" alt="수상 사진">
+        </div>
+      </div>
+      
+      <div class="timeline-item">
+        <div class="event">
+          <span class="year">2025.10</span>
+          <h3>3rd Place in the SW-AI Education Hackathon</h3>
+          <p>Sustainable Development Award at the 7th SW-AI Education Creative Convergence Hackathon</p>
+          <img src="해커톤.jpg" alt="수상 사진">
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="event">
+          <span class="year">2025.09</span>
+          <h3>First student to obtain OPIC IM2 score on campus</h3>
+          <p>Obtaining OPIC IM2</p>
+          <img src="오픽.jpg" alt="수상 사진">
+        </div>
+      </div>
+      
+      <div class="timeline-item">
+        <div class="event">
+          <span class="year">2025.08</span>
+          <h3>Gold medal in the suburban orchestra concert competition</h3>
+          <p>Gold Prize Winner at the 22nd Chuncheon National Wind Instrument Competition</p>
+          <img src="마이스터윈드오케스트라.jpg" alt="수상 사진">
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="event">
+          <span class="year">2025.08</span>
+          <h3>Gumi University Semiconductor Process Training Program</h3>
+          <p>Completion of training in the eight major semiconductor processes, design, and practical training</p>
+          <img src="구미대연수.jpg" alt="수상 사진">
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="event">
+          <span class="year">2025.07</span>
+          <h3>Obtain programming certification</h3>
+          <p>Obtained Coding Specialist Professional 1 Python certification</p>
+          <img src="코스프로.png" alt="수상 사진">
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="event">
+          <span class="year">2025.04</span>
+          <h3>25th Local Skills Competition Prize Winner</h3>
+          <p>Industrial Robot Division Encouragement Award</p>
+          <img src="지방기능경기대회.jpg" alt="수상 사진">
+        </div>
+      </div>
+      
+      <div class="timeline-item">
+        <div class="event">
+          <span class="year">2024.11</span>
+          <h3>Grand Prize Winner of the On-Campus Major Ability Competition</h3>
+          <p>First place gold medal in the Code Up Challenge category of the Professional Ability Competition</p>
+          <img src="시상식.JPG" alt="수상 사진">
+        </div>
+      </div>
+      
+      <div class="timeline-item">
+        <div class="event">
+          <span class="year">2024.11</span>
+          <h3>Gold medal in the intramural major competency competition</h3>
+          <p>Electronic Solar Power Generation Application Circuit Project Wins Gold Award</p>
+          <img src="전자프로젝트사진.jpg" alt="수상 사진">
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="event">
+          <span class="year">2024.10</span>
+          <h3>Bronze medalist at the suburban robot contest</h3>
+          <p>Bronze Medal Winner at the 2024 International Robot Contest AI Robot Challenge</p>
+          <img src="robot.jpg" alt="수상 사진">
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="event">
+          <span class="year">2024.05</span>
+          <h3>Achieved 700 CodeUp problem solutions</h3>
+          <p>
+            link: 
+            <a href="https://www.codeup.kr/userinfo.php?user=g2410704" target="_blank">
+              https://www.codeup.kr/userinfo.php?user=g2410704
+            </a>
+          </p>
+          <img src="코드업.png" alt="수상 사진">
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="event">
+          <span class="year">2024.05</span>
+          <h3>Start of major specialization club activities</h3>
+          <img src="기능부.jpg" alt="수상 사진">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact 섹션 -->
+  <div class="section contact" id="contact">
+    <h2>Contact</h2>
+    <p>call: <a href="tel:01076343016">010-7634-3016</a></p>
+    <p>gmail: <a href="mailto:jairus03032008@gmail.com">jairus03032008@gmail.com</a></p>
+  </div>
+</div>
+</body>
+</html>
